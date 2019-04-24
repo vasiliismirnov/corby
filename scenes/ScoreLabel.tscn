@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/scores_font.tres" type="DynamicFont" id=1]
+
+[node name="ScoreLabel" type="Label"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -14.5
+margin_bottom = 14.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.803922, 0.843137, 0.839216, 1 )
+align = 2
+

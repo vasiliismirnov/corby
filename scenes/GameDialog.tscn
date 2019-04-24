@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/GameDialog.gd" type="Script" id=1]
+[ext_resource path="res://assets/font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/GameMenuButton.tres" type="StyleBox" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.027451, 0.231373, 0.298039, 0.862745 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=3]
+size = 26
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 4
+border_color = Color( 0.803922, 0.843137, 0.839216, 1 )
+border_blend = true
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="GameDialog" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -202.5
+margin_top = -360.0
+margin_right = 197.5
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 1 )
+popup_exclusive = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PopupPanel/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 380.0
+margin_bottom = 380.0
+custom_constants/separation = 40
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 360.0
+margin_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.803922, 0.843137, 0.839216, 1 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="SubtitleLabel" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+margin_top = 165.0
+margin_right = 360.0
+margin_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.803922, 0.843137, 0.839216, 1 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 360.0
+margin_bottom = 265.0
+custom_constants/separation = 80
+alignment = 1
+
+[node name="YesButton" type="Button" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 105.0
+margin_right = 147.0
+margin_bottom = 33.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.803922, 0.843137, 0.839216, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 227.0
+margin_right = 255.0
+margin_bottom = 33.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.803922, 0.843137, 0.839216, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "No"
+
+[node name="PositionTween" type="Tween" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
